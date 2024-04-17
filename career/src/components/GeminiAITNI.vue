@@ -10,6 +10,7 @@
                 <input required type="file" name="image" id="image" ref="img" @change="selectedImg">
             </div>
             <button type="submit" :disabled="!question">{{ `${isLoading ? 'asking gemini...' : 'Ask'}` }}</button>
+            
         </form>
 
         <div v-if="imgUrl">
