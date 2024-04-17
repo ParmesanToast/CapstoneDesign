@@ -1,0 +1,97 @@
+<template>
+  
+  <Header></Header>
+  
+
+  <div class="container is-fluid" >
+    <div class="section is-fullwidth has-background-success" ref="section1" >
+      Section 1
+    </div>
+    
+    <div class="section" ref="section2" style="background-color: plum;">
+      Section 2
+    </div>
+    <div class="section" ref="section3" style="background-color: yellowgreen;">
+      Section 3
+    </div>
+  </div>
+
+
+  <Footer></Footer>
+</template>
+
+
+
+<script>
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
+
+export default {
+  name: 'AppHome',
+  components: {
+    Header,
+    Footer
+  },
+  
+
+  mounted() {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 // 화면에 나타나는 요소의 비율
+    };
+
+    // Intersection Observer 생성
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 요소가 화면에 나타나면 애니메이션 추가
+          entry.target.classList.add('visible');
+        } else {
+          // 요소가 화면을 벗어나면 애니메이션 제거
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, options);
+
+    // 각 섹션에 Observer 등록
+    this.$refs.section1 && observer.observe(this.$refs.section1);
+    this.$refs.section2 && observer.observe(this.$refs.section2);
+    this.$refs.section3 && observer.observe(this.$refs.section3);
+  },
+  el: 'app',
+  src:"https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js",
+};
+</script>
+
+<style scoped>
+
+body{
+  margin: 0;
+}
+.container{
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  height: 100vh; /* 화면 전체 높이 */
+  opacity: 0; /* 초기에는 안 보이게 설정 */
+  transition: opacity 0.5s; /* 애니메이션 효과 설정 */
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin: 0;
+  padding: 0;
+}
+
+#app{
+  background-color: red;
+  padding: 0px;
+}
+
+.visible {
+  opacity: 1; /* 화면에 나타날 때 투명도를 1로 변경하여 나타나도록 함 */
+}
+</style>
