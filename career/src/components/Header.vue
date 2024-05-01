@@ -51,7 +51,7 @@
     <div class="navbar-start">
       
       <router-link to="/community" class="navbar-item">community</router-link>
-      <router-link to="/interview" class="navbar-item">interview</router-link>
+      <router-link to="/interview" class="navbar-item">게시판</router-link>
       
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -72,11 +72,8 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <a href="/login" class="button is-primary">
             <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
           </a>
         </div>
       </div>

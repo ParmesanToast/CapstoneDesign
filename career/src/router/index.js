@@ -32,6 +32,11 @@ const routes = [
     name:'interview',
     component: () => import('../views/AppInterview.vue')
   },
+  {
+    path:'/login',
+    name:'login',
+    component: () => import('../views/AppLogin.vue')
+  },
 ]
 
 const router = createRouter({
